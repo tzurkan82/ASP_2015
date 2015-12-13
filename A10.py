@@ -340,49 +340,9 @@ def sineModelMultiRes(x, fs, w1, w2, w3, N1, N2, N3, t, B1, B2, B3):
  
  
  
- 
-#
-#                                   
-#
-#   Test function: sineModelOriginalTest1
-#      (calls the ORIGINAL sineModel FUNCTION (from sineModel.py))
-#
-#
-#
-def sineModelOriginalTest1(inputFile, M):
-    
-    print "\n\n\n###############  RUN THE ORIGINAL TEST (without multiresolution)  ###############\n"
-    
-    #M1 = 4095
-    M1 = M
-    
-    print "M: "
-    print M
-    
-    N1 = int(pow(2, np.ceil(np.log2(M1))))      # FFT Size, power of 2 larger than M
 
-    print "N1: "
-    print N1
-    
-    t = -60.0                                   # threshold
 
-    fs, x = UF.wavread(inputFile)               # read input sound
-    
-    #print "Ploting \"x\""
-    #plt.plot(x)
-    
-    window = 'blackman'                         # Window type
-    w1 = get_window(window, M1)                 # compute analysis window
-            
-    return sineModelOriginal(x,fs,w1,N1,t)
-    
-    
-    
-    
-    
-    
-    
-    
+  
 #
 #
 #
@@ -462,6 +422,49 @@ def sineModelOriginal(x, fs, w, N, t):
 
 
 
+
+#
+#                                   
+#
+#   Test function: sineModelOriginalTest1
+#      (calls the ORIGINAL sineModel FUNCTION (from sineModel.py))
+#
+#
+#
+def sineModelOriginalTest1(inputFile, M):
+    
+    print "\n\n\n###############  RUN THE ORIGINAL TEST (without multiresolution)  ###############\n"
+    
+    #M1 = 4095
+    M1 = M
+    
+    print "M: "
+    print M
+    
+    N1 = int(pow(2, np.ceil(np.log2(M1))))      # FFT Size, power of 2 larger than M
+
+    print "N1: "
+    print N1
+    
+    t = -80.0                                   # threshold
+
+    fs, x = UF.wavread(inputFile)               # read input sound
+    
+    #print "Ploting \"x\""
+    #plt.plot(x)
+    
+    window = 'blackman'                         # Window type
+    w1 = get_window(window, M1)                 # compute analysis window
+            
+    return sineModelOriginal(x,fs,w1,N1,t)
+
+
+
+
+
+
+
+
 #
 #    
 #
@@ -496,7 +499,7 @@ def sineModelMultiResTest1(inputFile, M1, M2, M3):
     print "N3: "
     print N3
     
-    t = -60.0                                   # threshold
+    t = -80.0                                   # threshold
 
     fs, x = UF.wavread(inputFile)               # read input sound
     
